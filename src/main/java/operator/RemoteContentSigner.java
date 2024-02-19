@@ -1,3 +1,13 @@
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.operator.ContentSigner;
+import org.bouncycastle.operator.DigestCalculator;
+import org.bouncycastle.operator.ContentSignerException;
+
 
 
 /**
@@ -22,6 +32,8 @@
     any Bouncy Castle operation that requires a `ContentSigner`. This includes the generation of certificates, as shown in 
     the provided Bouncy Castle code.
  */
+
+ 
 public class RestContentSigner implements ContentSigner {
     private final DigestCalculator digestCalculator;
     private final String restEndpoint;
