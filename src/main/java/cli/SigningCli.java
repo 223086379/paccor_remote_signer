@@ -33,7 +33,7 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.util.encoders.Base64;
-
+import operator.RemoteContentSigner;
 
 public class SigningCli {
     public static final String DATE_FORMAT = "yyyyMMdd";
@@ -177,9 +177,10 @@ public class SigningCli {
         try {
             AlgorithmIdentifier sigAlgId = caCred.getCertificate().getSignatureAlgorithm();
             AlgorithmIdentifier digAlgId = new DefaultDigestAlgorithmIdentifierFinder().find(sigAlgId);
-            ContentSigner signer;
-            signer = new PcBcContentSignerBuilder(sigAlgId, digAlgId).build(PrivateKeyFactory.createKey(caCred.getPrivateKey()));
-            ach = pcf.build(signer);
+           
+            RemoteContentSigner remoteSigner = new RemoteContentSigner(digestCalculator, restEndpoint);
+
+            ach = pcf.build(remoteSigner);
         } catch (OperatorCreationException e) {
             throw new IllegalArgumentException(e);
         }
