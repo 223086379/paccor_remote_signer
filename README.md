@@ -7,6 +7,17 @@ The device component information gathering aspect of the program is platform-dep
 
 This source code contains our attempts at capturing ASN.1 definitions from TCG Credential specification documents in Java. The idea is to use the BouncyCastle style for parsing/building ASN.1 elements. The coding style is our own twist on what we found in the source code of BouncyCastle's provider library, especially those classes in org.bouncycastle.asn1.x509.
 
+## Support External Signer 
+Typically, dedicated key management services are used to sign a certificate. These services typically use hardware protected key storage. 
+
+Minor modification to code allow for more secure and flexible use of paccor.
+  a) src/main/java/cli/SigningCli.java - 
+       Replaced the line with remoteContentSigner
+       RemoteContentSigner remoteSigner = new RemoteContentSigner(digestCalculator, restEndpoint);
+       ach = pcf.build(remoteSigner);
+ 
+  b) src/main/java/operator/RemoteContentSigner.java
+      Implemented the class.
 ## Getting started:
 Head to the [Releases](https://github.com/nsacyber/paccor/releases) page and download the package relevant to your OS to begin using paccor.
 
