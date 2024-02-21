@@ -61,6 +61,6 @@ public class RestContentSigner implements ContentSigner {
     // Helper to read the signature bytes from the response stream
     private byte[] readSignatureFromResponse(InputStream in) throws IOException {
         // Implement reading the signature bytes from the InputStream 
-        // (adjust based on how your remote signer returns the signature)
+        // (adjust based on how remote signer returns the signature)
     }
 }
