@@ -10,10 +10,10 @@ This source code contains our attempts at capturing ASN.1 definitions from TCG C
 ## Support External Signer 
 Typically, dedicated key management services are used to sign a certificate. These services typically use hardware protected key storage. 
 
-Minor modification to code allow for more secure and flexible use of paccor. \n
-  a) src/main/java/cli/SigningCli.java - 
-       Replaced the line with remoteContentSigner
-       RemoteContentSigner remoteSigner = new RemoteContentSigner(digestCalculator, restEndpoint);
+Minor modification to code allow for more secure and flexible use of paccor. <br>
+  a) src/main/java/cli/SigningCli.java - <br>
+       Replaced the line with remoteContentSigner <br>
+       RemoteContentSigner remoteSigner = new RemoteContentSigner(digestCalculator, restEndpoint); <br>
        ach = pcf.build(remoteSigner);
  
   b) src/main/java/operator/RemoteContentSigner.java
